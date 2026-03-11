@@ -107,6 +107,28 @@ public class IntContainer {
     }
 
     /**
+     * Возвращает строковое представление контейнера.
+     *
+     * @return строка с элементами контейнера
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+
+        for (int i = 0; i < size; i++) {
+            builder.append(elements[i]);
+
+            if (i < size - 1) {
+                builder.append(", ");
+            }
+        }
+
+        builder.append("]");
+        return builder.toString();
+    }
+
+    /**
      * Возвращает текущее количество элементов в контейнере.
      *
      * @return количество элементов
