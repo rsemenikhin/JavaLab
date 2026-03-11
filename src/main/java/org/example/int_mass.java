@@ -63,6 +63,30 @@ public class IntContainer {
     }
 
     /**
+     * Возвращает элемент по индексу.
+     *
+     * @param index индекс элемента
+     * @return элемент по указанному индексу
+     * @throws IndexOutOfBoundsException если индекс выходит за границы контейнера
+     */
+    public int get(int index) {
+        checkIndex(index);
+        return elements[index];
+    }
+
+    /**
+     * Проверяет корректность индекса.
+     *
+     * @param index индекс для проверки
+     * @throws IndexOutOfBoundsException если индекс некорректен
+     */
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
+
+    /**
      * Возвращает текущее количество элементов в контейнере.
      *
      * @return количество элементов
