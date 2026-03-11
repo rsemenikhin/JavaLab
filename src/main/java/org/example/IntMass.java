@@ -4,7 +4,7 @@ package org.example;
  * Контейнер для хранения целых чисел.
  * Реализован на основе динамического массива.
  */
-public class IntContainer {
+public class IntMass {
     private static final int DEFAULT_CAPACITY = 10;
 
     private int[] elements;
@@ -13,7 +13,7 @@ public class IntContainer {
     /**
      * Создает контейнер с начальной вместимостью по умолчанию.
      */
-    public IntContainer() {
+    public IntMass() {
         this.elements = new int[DEFAULT_CAPACITY];
         this.size = 0;
     }
@@ -24,7 +24,7 @@ public class IntContainer {
      * @param initialCapacity начальная вместимость контейнера
      * @throws IllegalArgumentException если initialCapacity меньше 0
      */
-    public IntContainer(int initialCapacity) {
+    public IntMass(int initialCapacity) {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Initial capacity cannot be negative");
         }
