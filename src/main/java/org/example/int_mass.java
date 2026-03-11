@@ -87,6 +87,26 @@ public class IntContainer {
     }
 
     /**
+     * Удаляет элемент по индексу.
+     *
+     * @param index индекс удаляемого элемента
+     * @return удаленный элемент
+     * @throws IndexOutOfBoundsException если индекс выходит за границы контейнера
+     */
+    public int removeAt(int index) {
+        checkIndex(index);
+
+        int removedValue = elements[index];
+
+        for (int i = index; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
+        }
+
+        size--;
+        return removedValue;
+    }
+
+    /**
      * Возвращает текущее количество элементов в контейнере.
      *
      * @return количество элементов
