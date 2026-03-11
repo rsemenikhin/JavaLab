@@ -34,6 +34,35 @@ public class IntContainer {
     }
 
     /**
+     * Добавляет элемент в контейнер.
+     *
+     * @param value значение для добавления
+     */
+    public void add(int value) {
+        ensureCapacity();
+        elements[size] = value;
+        size++;
+    }
+
+    /**
+     * Увеличивает вместимость внутреннего массива, если он заполнен.
+     */
+    private void ensureCapacity() {
+        if (size < elements.length) {
+            return;
+        }
+
+        int newCapacity = elements.length == 0 ? 1 : elements.length * 2;
+        int[] newElements = new int[newCapacity];
+
+        for (int i = 0; i < size; i++) {
+            newElements[i] = elements[i];
+        }
+
+        elements = newElements;
+    }
+
+    /**
      * Возвращает текущее количество элементов в контейнере.
      *
      * @return количество элементов
