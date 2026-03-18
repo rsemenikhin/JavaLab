@@ -22,11 +22,15 @@ public final class App {
         Scanner scanner = new Scanner(System.in);
         ExpressionEngine engine = new ExpressionEngine();
 
+        System.out.println("Поддерживаются операции +, -, *, /, ^, скобки, переменные и функции.");
         System.out.print("Введите выражение: ");
         String source = scanner.nextLine();
 
         try {
             Set<String> variableNames = engine.collectVariables(source);
+            if (!variableNames.isEmpty()) {
+                System.out.println("Найдены переменные: " + variableNames);
+            }
             Map<String, Double> values = askVariableValues(scanner, variableNames);
             double result = engine.evaluate(source, values);
             System.out.println("Результат: " + result);
