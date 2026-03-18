@@ -82,6 +82,15 @@ class ExpressionEngineTest {
     }
 
     @Test
+    void shouldAskForRepeatedVariableOnlyOnceDuringScan() {
+        ExpressionEngine engine = new ExpressionEngine();
+
+        Set<String> variables = engine.collectVariables("x + x * max(x, y)");
+
+        assertEquals(new LinkedHashSet<String>(Arrays.asList("x", "y")), variables);
+    }
+
+    @Test
     void shouldWorkWithConstants() {
         ExpressionEngine engine = new ExpressionEngine();
 
@@ -123,6 +132,20 @@ class ExpressionEngineTest {
         ExpressionEngine engine = new ExpressionEngine();
 
         assertThrows(ExpressionException.class, () -> engine.evaluate("pow(2)"));
+    }
+
+    @Test
+    void shouldFailOnNegativeSqrtArgument() {
+        ExpressionEngine engine = new ExpressionEngine();
+
+        assertThrows(ExpressionException.class, () -> engine.evaluate("sqrt(-1)"));
+    }
+
+    @Test
+    void shouldFailOnNonPositiveLogarithmArgument() {
+        ExpressionEngine engine = new ExpressionEngine();
+
+        assertThrows(ExpressionException.class, () -> engine.evaluate("log(0)"));
     }
 
     @Test
