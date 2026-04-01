@@ -6,16 +6,9 @@ public class App {
     public static void main(String[] args) {
         BenchmarkRunner runner = new BenchmarkRunner();
         List<BenchmarkResult> results = runner.runAll(1000);
+        ResultTableFormatter formatter = new ResultTableFormatter();
 
-        for (BenchmarkResult result : results) {
-            System.out.println(
-                    result.getListType().getTitle()
-                            + " "
-                            + result.getOperationType().getTitle()
-                            + ": "
-                            + result.getTimeMillis()
-                            + " ms"
-            );
-        }
+        System.out.println("ArrayList and LinkedList performance comparison");
+        System.out.println(formatter.format(results));
     }
 }
