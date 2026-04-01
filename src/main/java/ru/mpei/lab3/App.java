@@ -2,9 +2,17 @@ package ru.mpei.lab3;
 
 import java.util.List;
 
+/**
+ * Application entry point.
+ */
 public class App {
     private static final int DEFAULT_COUNT = 1000;
 
+    /**
+     * Starts benchmark and prints results.
+     *
+     * @param args optional first argument with operation count
+     */
     public static void main(String[] args) {
         int count = getCount(args);
 
@@ -17,6 +25,12 @@ public class App {
         System.out.println(formatter.format(results));
     }
 
+    /**
+     * Returns operation count from arguments.
+     *
+     * @param args command line arguments
+     * @return operation count
+     */
     static int getCount(String[] args) {
         if (args.length == 0) {
             return DEFAULT_COUNT;

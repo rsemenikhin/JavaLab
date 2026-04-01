@@ -3,7 +3,16 @@ package ru.mpei.lab3;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Formats results as a text table.
+ */
 public class ResultTableFormatter {
+    /**
+     * Builds table string from benchmark results.
+     *
+     * @param results benchmark results
+     * @return formatted table
+     */
     public String format(List<BenchmarkResult> results) {
         StringBuilder builder = new StringBuilder();
 

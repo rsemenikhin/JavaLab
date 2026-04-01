@@ -1,5 +1,8 @@
 package ru.mpei.lab3;
 
+/**
+ * Stores one benchmark result.
+ */
 public class BenchmarkResult {
     private final ListType listType;
     private final OperationType operationType;
