@@ -1,13 +1,21 @@
 package ru.mpei.lab3;
 
+import java.util.List;
+
 public class App {
     public static void main(String[] args) {
         BenchmarkRunner runner = new BenchmarkRunner();
+        List<BenchmarkResult> results = runner.runAll(1000);
 
-        BenchmarkResult arrayListResult = runner.runAddBenchmark(ListType.ARRAY_LIST, 1000);
-        BenchmarkResult linkedListResult = runner.runAddBenchmark(ListType.LINKED_LIST, 1000);
-
-        System.out.println(arrayListResult.getListType().getTitle() + " add: " + arrayListResult.getTimeMillis() + " ms");
-        System.out.println(linkedListResult.getListType().getTitle() + " add: " + linkedListResult.getTimeMillis() + " ms");
+        for (BenchmarkResult result : results) {
+            System.out.println(
+                    result.getListType().getTitle()
+                            + " "
+                            + result.getOperationType().getTitle()
+                            + ": "
+                            + result.getTimeMillis()
+                            + " ms"
+            );
+        }
     }
 }
