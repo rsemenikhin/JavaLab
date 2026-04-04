@@ -1,6 +1,8 @@
 package ru.mpei.lab4;
 
+import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
@@ -39,7 +41,9 @@ public class CsvPersonReader {
             throw new IOException("File not found: " + CSV_FILE_NAME);
         }
 
-        try (CSVReader reader = new CSVReader(new InputStreamReader(inputStream), SEPARATOR)) {
+        try (CSVReader reader = new CSVReaderBuilder(new InputStreamReader(inputStream))
+                .withCSVParser(new CSVParserBuilder().withSeparator(SEPARATOR).build())
+                .build()) {
             reader.readNext();
 
             String[] line;
