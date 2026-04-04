@@ -14,11 +14,21 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Reads people from CSV file.
+ */
 public class CsvPersonReader {
     private static final String CSV_FILE_NAME = "foreign_names.csv";
     private static final char SEPARATOR = ';';
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
+    /**
+     * Reads people from resource CSV file.
+     *
+     * @return list of people
+     * @throws IOException if file cannot be read
+     * @throws CsvValidationException if CSV line is invalid
+     */
     public List<Person> readPeople() throws IOException, CsvValidationException {
         List<Person> people = new ArrayList<Person>();
         Map<String, Department> departments = new LinkedHashMap<String, Department>();
