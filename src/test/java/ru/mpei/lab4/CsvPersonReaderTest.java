@@ -4,7 +4,9 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,5 +27,21 @@ public class CsvPersonReaderTest {
         assertNotNull(firstPerson.getDepartment());
         assertNotNull(firstPerson.getSalary());
         assertNotNull(firstPerson.getBirthDate());
+    }
+
+    @Test
+    public void shouldReadDepartmentsFromCsvFile() throws IOException, CsvValidationException {
+        CsvPersonReader reader = new CsvPersonReader();
+
+        List<Person> people = reader.readPeople();
+        Set<String> departmentNames = new HashSet<String>();
+
+        for (Person person : people) {
+            assertNotNull(person.getDepartment());
+            assertNotNull(person.getDepartment().getName());
+            departmentNames.add(person.getDepartment().getName());
+        }
+
+        assertFalse(departmentNames.isEmpty());
     }
 }
